@@ -37,7 +37,7 @@ public class ForgeWorld implements LocalWorld
     private BiomeGenerator biomeManager;
 
     private static int nextBiomeId = 0;
-    private static int maxBiomeCount = 256;
+    private static int maxBiomeCount = 512;
     private static Biome[] biomes = new Biome[maxBiomeCount];
     private static BiomeGenBase[] biomesToRestore = new BiomeGenBase[maxBiomeCount];
 

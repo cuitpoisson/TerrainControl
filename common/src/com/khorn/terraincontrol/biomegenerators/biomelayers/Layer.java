@@ -56,11 +56,11 @@ public abstract class Layer
     */
 
 
-    protected static final int BiomeBits = 255; // 255 63
-    protected static final int LandBit = 256;   // 256 64
-    public static final int RiverBits = 3072; //3072 768
-    protected static final int IceBit = 512;   // 512  128
-    protected static final int IslandBit = 4096; // 4096 1024
+    protected static final int BiomeBits = 0xaFF; // 255 63
+    protected static final int LandBit = 0x200;   // 256 64
+    public static final int RiverBits = 0x1800; //3072 768
+    protected static final int IceBit = 0x400;   // 512  128
+    protected static final int IslandBit = 0x2000; // 4096 1024
 
     protected static int GetBiomeFromLayer(int BiomeAndLand)
     {
