@@ -21,11 +21,18 @@ public class BukkitBiome implements LocalBiome
     public BukkitBiome(BiomeBase biome)
     {
         this.biomeBase = biome;
-        if (DefaultBiome.getBiome(biome.id) == null)
+        if(biomeBase instanceof BiomeBaseExtended)
+        {
+        	customID = ((BiomeBaseExtended)biomeBase).id;
+        }
+        else
+        {
+        	customID = biomeBase.id;
+        }
+        if (DefaultBiome.getBiome(customID) == null)
         {
             this.isCustom = true;
         }
-        customID = biomeBase.id;
 
         this.temperature = biome.temperature;
         this.humidity = biome.humidity;
@@ -62,13 +69,27 @@ public class BukkitBiome implements LocalBiome
     @Override
     public String getName()
     {
-        return this.biomeBase.y;
+        if(biomeBase instanceof BiomeBaseExtended)
+        {
+        	return ((BiomeBaseExtended)biomeBase).y;
+        }
+        else
+        {
+        	return biomeBase.y;
+        }
     }
 
     @Override
     public int getId()
     {
-        return this.biomeBase.id;
+        if(biomeBase instanceof BiomeBaseExtended)
+        {
+        	return ((BiomeBaseExtended)biomeBase).id;
+        }
+        else
+        {
+        	return biomeBase.id;
+        }
     }
 
     @Override
@@ -86,24 +107,52 @@ public class BukkitBiome implements LocalBiome
     @Override
     public float getSurfaceHeight()
     {
-        return this.biomeBase.D;
+        if(biomeBase instanceof BiomeBaseExtended)
+        {
+        	return ((BiomeBaseExtended)biomeBase).D;
+        }
+        else
+        {
+        	return biomeBase.D;
+        }
     }
 
     @Override
     public float getSurfaceVolatility()
     {
-        return this.biomeBase.E;
+        if(biomeBase instanceof BiomeBaseExtended)
+        {
+        	return ((BiomeBaseExtended)biomeBase).E;
+        }
+        else
+        {
+        	return biomeBase.E;
+        }
     }
 
     @Override
     public byte getSurfaceBlock()
     {
-        return this.biomeBase.A;
+        if(biomeBase instanceof BiomeBaseExtended)
+        {
+        	return ((BiomeBaseExtended)biomeBase).A;
+        }
+        else
+        {
+        	return biomeBase.A;
+        }
     }
 
     @Override
     public byte getGroundBlock()
     {
-        return this.biomeBase.B;
+        if(biomeBase instanceof BiomeBaseExtended)
+        {
+        	return ((BiomeBaseExtended)biomeBase).B;
+        }
+        else
+        {
+        	return biomeBase.B;
+        }
     }
 }

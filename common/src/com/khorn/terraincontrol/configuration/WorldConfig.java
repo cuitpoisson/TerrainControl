@@ -209,9 +209,11 @@ public class WorldConfig extends ConfigFile
 
         ArrayList<LocalBiome> localBiomes = new ArrayList<LocalBiome>(world.getDefaultBiomes());
 
+        TerrainControl.log(Level.WARNING, "Adding custom biomes:");
         // Add custom biomes to world
         for (String biomeName : this.CustomBiomes)
         {
+            TerrainControl.log(Level.WARNING, biomeName + " ID: " + this.CustomBiomeIds.get(biomeName));
             if (checkOnly)
                 localBiomes.add(world.getNullBiome(biomeName));
             else
@@ -229,7 +231,11 @@ public class WorldConfig extends ConfigFile
 
         for (LocalBiome localBiome : localBiomes)
         {
-            BiomeConfig config = new BiomeConfig(biomeFolder, localBiome, this);
+            TerrainControl.log(Level.WARNING, localBiome.getName());
+            BiomeConfig config;
+            if(localBiome.getName() != null)
+            {
+            	config = new BiomeConfig(biomeFolder, localBiome, this);
             if (checkOnly)
                 continue;
 
@@ -278,7 +284,7 @@ public class WorldConfig extends ConfigFile
                 {
                     TerrainControl.log(Level.WARNING, "Wrong color in " + config.Biome.getName());
                 }
-
+            }
             }
         }
         TerrainControl.log(Level.INFO, "Loaded {0} biomes", new Object[]{biomesCount});
