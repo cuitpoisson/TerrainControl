@@ -693,13 +693,12 @@ public class BiomeConfig extends ConfigFile
         writeValue(TCDefaultValues.BiomeVolatility.name(), this.BiomeVolatility);
 
         this.writeNewLine();
-        writeComment("Extra height that can be added to biome. Must be between 0.0(default) and 32.0, inclusive.");
-        writeComment("It adds approximately 8 x ExtraBiomeHeight range on top of biome \"height\" that can ");
-        writeComment("generate like the nether. There is no diffusion between biomes.");
+        writeComment("Extra height that generates in areas around the biome. Typically adds cliffs, overhangs,");
+        writeComment("and arches up to 8 x ExtraBiomeHeight blocks above normal biome generation.");
         writeValue(TCDefaultValues.ExtraBiomeHeight.name(), this.ExtraBiomeHeight);
         
         writeComment("Makes the middle region of the Extra height either less likely (constrict when positive),");
-        writeComment("or more likely (expand when negative) to generate. Is between -100.0 and 100.0 inclusive");
+        writeComment("or more likely (expand when negative) to generate. Typical values range from -0.4 to 1.0");
         writeValue(TCDefaultValues.ExtraHeightConstrictWaist.name(), this.ExtraHeightConstrictWaist);
 
 
@@ -1122,8 +1121,8 @@ public class BiomeConfig extends ConfigFile
         this.BiomeHeight = (float) applyBounds(this.BiomeHeight, -10.0, 10.0);
         this.BiomeRarity = applyBounds(this.BiomeRarity, 1, this.worldConfig.BiomeRarityScale);
 
-        this.ExtraHeightConstrictWaist = (float) applyBounds(this.ExtraHeightConstrictWaist, -100.0,100.0);
-        this.ExtraBiomeHeight = (float) applyBounds(this.ExtraBiomeHeight, 0.0, 256.0);
+        this.ExtraHeightConstrictWaist = (float) applyBounds(this.ExtraHeightConstrictWaist, -10.0,10.0);
+        this.ExtraBiomeHeight = (float) applyBounds(this.ExtraBiomeHeight, 0.0, 32.0);
         
         this.SmoothRadius = applyBounds(this.SmoothRadius,0,32);
 
